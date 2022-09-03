@@ -22,11 +22,11 @@ const loadNews = async(category_id) =>{
     const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
     const res = await fetch(url);
     const data = await res.json();
-    let viewers = data.data;
-    viewers.sort((a, b) => {
+    let newsDetails = data.data;
+    newsDetails.sort((a, b) => {
         return b.total_view - a.total_view;
         });
-    displayAllNews(data.data);
+    displayAllNews(newsDetails);
 }
 
 const displayAllNews = allNews =>{
@@ -35,6 +35,8 @@ const displayAllNews = allNews =>{
     allNews.forEach(news =>{
         const newsDiv = document.createElement('div');
         newsDiv.classList.add('card');
+        let newsText = news.details;
+        newsText = newsText.slice(0,450);
         newsDiv.innerHTML = `
         <div class="row g-0">
             <div class="col-md-4">
@@ -43,7 +45,7 @@ const displayAllNews = allNews =>{
             <div class="col-md-8">
                 <div class="card-body">
                     <h5 class="card-title">${news.title}</h5>
-                    <p class="card-text">${news.details}</p>
+                    <p class="card-text">${newsText}</p>
                     <p class="card-text">
                         <small class="text-start text-muted">
                         <img src="${news.author.img}" class="rounded-circle" style="height: 50px;" alt="...">
