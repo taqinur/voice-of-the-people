@@ -22,6 +22,7 @@ const loadNews = async(category_id) =>{
     const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
     const res = await fetch(url);
     const data = await res.json();
+    toggleSpinner(true);
     let newsDetails = data.data;
     newsDetails.sort((a, b) => {
         return b.total_view - a.total_view;
@@ -60,14 +61,47 @@ const displayAllNews = allNews =>{
                     <p class="card-text">
                         <small class="text-start text-muted">
                         <img src="${news.author.img}" class="rounded-circle" style="height: 50px;" alt="...">
-                        ${news.author.name}<br>${news.author.published_date}</small> <span class="text-center"><i class="fa-regular fa-eye"></i> ${news.total_view}</span>
+                        ${news.author.name ? news.author.name : 'Author name not found'}<br>${news.author.published_date}</small> <span class="text-center"><i class="fa-regular fa-eye"></i> ${news.total_view ? news.total_view : 'Total View not found'}</span>
+                        <span class="row justify-content-end"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newsModal"><i class="fa-brands fa-nfc-directional"></i></button></span>
                     </p>
                 </div>
             </div>
         </div>
         `;
         newsContainer.appendChild(newsDiv);
+        toggleSpinner(false);
+        document.getElementById('newsModal').addEventListener('click',function(){
+            console.log(news._id);
+        })
     });
 }
+
+const loadFullNews = async(news_id) =>{
+    const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    console.log(data.data);
+}
+
+const displayFullNews = news =>{
+    console.log(news);
+    const modalTitle = document.getElementById('newsModalLabel');
+    modalTitle.innerText = news.title;
+    const newsFullDetails = document.getElementById('full-news');
+    newsFullDetails.innerHTML = `
+    <p>${news.details}</p>
+    `;
+}
+
+const toggleSpinner = isLoading =>{
+    const loaderSection = document.getElementById('loader');
+    if(isLoading){
+        loaderSection.classList.remove('d-none');
+    }
+    else{
+        loaderSection.classList.add('d-none');
+    }
+}
+
 loadCategories();
 loadNews();
