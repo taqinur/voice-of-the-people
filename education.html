@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice of the People</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <header class="container">
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid m-lg-3 m-sm-1">
+                <h2 class="text-primary">Voice of The People</h2>
+                <div class="navbar-nav">
+                    <a class="nav-link" href="index.html">Breaking News</a>
+                    <a class="nav-link active" aria-current="page" href="#">Education</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main class="container">
+        <section class="mt-5 mb-2">
+            <h3>1. Difference between var, let and Const</h3>
+            <p>a) var is global scoped. Const and let is local scoped. <br>
+            b) const can't be used in same scope. Var can be used and let can be updated only. <br>
+            c) let and const are newer and more standard form in Javascript.</p>
+
+            <h3>2. Difference between arrow and regular function</h3>
+            <p>a) Arrow functions can't be used as constructor but regular function can be used. <br>
+            b) Arrow funtions are implicitly returned where regular functions don't.</p>
+
+            <h3>3. Why we use template string?</h3>
+            <p>ES6 has a new kind of string literal syntax called template strings. They look like ordinary strings, except using the backtick character `. <br>
+               a) The code in a template substitution can be any JavaScript expression, so function calls, arithmetic, and so on are allowed. (If you really want to, you can even nest a template string inside another template string, which I call template inception. <br> b) If either value is not a string, it’ll be converted to a string using the usual rules. For example, if action is an object, its .toString() method will be called.
+                <br> c) If we need to write a backtick inside a template string, we must use it with a backslash: `\`` is the same as "`".</p>
+        </section>
+    </main>
+
+    <footer class="mt-auto">
+        <div class="container-fluid row align-items-center bg-dark position-absolute"
+            style="height: 6rem; width: 100%;">
+            <p class="text-center text-white">Copyright @ 2022 All Rights Reserved</p>
+        </div>
+    </footer>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/95d53887a9.js" crossorigin="anonymous"></script>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>

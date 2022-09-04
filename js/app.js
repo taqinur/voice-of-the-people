@@ -70,14 +70,15 @@ const displayAllNews = allNews =>{
         `;
         newsContainer.appendChild(newsDiv);
         toggleSpinner(false);
-        document.getElementById('newsModal').addEventListener('click',function(){
-            loadFullNews(news._id);
-        })
     });
 }
 
+document.getElementById('newsModal').addEventListener('click',function(){
+    loadFullNews(news._id);
+})
 const loadFullNews = async(id) =>{
     const url = `https://openapi.programming-hero.com/api/news/${id}`;
+    console.log(url[0]);
     const res = await fetch(url);
     const data = await res.json();
     displayFullNews(data.data);
