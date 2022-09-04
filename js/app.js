@@ -15,6 +15,7 @@ const displayNewsCategories = allCategories =>{
         <button onclick="loadNews('${category.category_id}')" class="btn btn-primary" type="submit">${category.category_name}</button>
         `;
         categoriesContainer.appendChild(categoriesDiv);
+        toggleSpinner(true);
     });
 }
 
@@ -22,7 +23,6 @@ const loadNews = async(category_id) =>{
     const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
     const res = await fetch(url);
     const data = await res.json();
-    toggleSpinner(true);
     let newsDetails = data.data;
     newsDetails.sort((a, b) => {
         return b.total_view - a.total_view;
@@ -71,16 +71,16 @@ const displayAllNews = allNews =>{
         newsContainer.appendChild(newsDiv);
         toggleSpinner(false);
         document.getElementById('newsModal').addEventListener('click',function(){
-            console.log(news._id);
+            loadFullNews(news._id);
         })
     });
 }
 
-const loadFullNews = async(news_id) =>{
-    const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
+const loadFullNews = async(id) =>{
+    const url = `https://openapi.programming-hero.com/api/news/${id}`;
     const res = await fetch(url);
     const data = await res.json();
-    console.log(data.data);
+    displayFullNews(data.data);
 }
 
 const displayFullNews = news =>{
