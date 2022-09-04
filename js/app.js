@@ -24,7 +24,7 @@ const loadNews = async(category_id) =>{
     const res = await fetch(url);
     const data = await res.json();
     let newsDetails = data.data;
-    newsDetails.sort((a, b) => {
+    newsDetails.sort((a, b) =>{
         return b.total_view - a.total_view;
         });
     displayAllNews(newsDetails);
